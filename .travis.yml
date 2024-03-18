@@ -7,7 +7,7 @@ before_install:
 
 script:
     #-e CI=true
-  - docker run nmc03/docker-react npm run test -- --coverage
+  - docker run -e CI=true nmc03/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
@@ -17,7 +17,7 @@ deploy:
   bucket_name: "elasticbeanstalk-us-east-1-236010346834"
   bucket_path: "frontend"
   on:
-    branch: "main"
+    branch: main
   # Encrypted access keys for IAM User in "Evironment Variables" inside of Travis-CI
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key: "$AWS_SECRET_KEY"
